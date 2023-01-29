@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Wine Photoshop
+Comment=Image editor
+Exec=wine /home/carles/.Photoshop/PhotoshopCS5Portable
+Icon=wordpad
+Terminal=false
+Type=Application
+Categories=X-Wine;
+X-Desktop-File-Install-Version=0.22

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Umongo
+Comment=Application for managing mongo databases
+Exec=/home/carles/.umongo-linux-all_1-6-1/launch-umongo.sh
+Icon=/home/carles/.umongo-linux-all_1-6-1/MongoDB_Logo.png
+Terminal=false
+Type=Application
+Categories=Development;

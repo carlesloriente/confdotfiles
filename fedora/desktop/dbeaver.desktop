@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Dbeaver
+Comment=Application for managing databases
+Exec=/home/carles/.dbeaver/dbeaver/dbeaver
+Icon=/home/carles/.dbeaver/dbeaver/icon.xpm
+Terminal=false
+Type=Application
+Categories=Development;
+Name=dbeaver

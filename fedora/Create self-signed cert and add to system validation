@@ -1,0 +1,25 @@
+#
+# Search and replace roca-3r-local.local with the desired domain
+#
+
+
+# Generate the root (GIVE IT A PASSWORD IF YOU'RE NOT AUTOMATING SIGNING!):
+#openssl genrsa -aes256 -out ca_selfsigned.key 2048
+openssl genrsa -out ca_selfsigned.key 2048
+openssl req -new -x509 -days 7300 -key ca_selfsigned.key -sha256 -extensions v3_ca -out ca_selfsigned.crt
+
+# Generate the domain key:
+openssl genrsa -out roca-3r-local.local.key 2048
+
+# Generate the certificate signing request
+openssl req -sha256 -new -key roca-3r-local.local.key -out roca-3r-local.local.csr
+
+# Sign the request with your root key
+openssl x509 -sha256 -req -in roca-3r-local.local.csr -CA ca_selfsigned.crt -CAkey ca_selfsigned.key -CAcreateserial -out roca-3r-local.local.crt -days 7300
+
+# Check your homework:
+openssl verify -CAfile ca_selfsigned.crt roca-3r-local.local.crt
+
+# Add the trusted certificate to the system:
+sudo cp ca_selfsigned.crt /usr/local/share/ca-certificates/
+sudo update-ca-certificates

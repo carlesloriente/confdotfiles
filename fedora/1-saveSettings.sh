@@ -1,0 +1,73 @@
+#!/bin/bash
+#######################################################################################################
+#######################################################################################################
+#######################################################################################################
+######                                                                                          #######
+######                                                                                          #######
+######                                                                                          #######
+######                                    Save settings                                         #######
+######                                     Version-0.1                                          #######
+######                                                                                          #######
+######                                                                                          #######
+#######################################################################################################
+#######################################################################################################
+#######################################################################################################
+
+## Enable extended globbing for the +(...) pattern
+shopt -s extglob
+
+# define variables
+#DATE=$(date +%F-%a-%H.%M); # year-month-date-day-hour.minute format
+DATE=$(date +\%Y\%m\%d);
+BACKUP_DIR=( "BraveSoftware" "Code" "evolution" "gnome-gmail" "Insync" "rclone" "remmina" "Slack" "teamviewer" "VirtualBox" );
+OUTPUT_DIR="$HOME/Documents/carles.loriente@gmail.com/Google/Drive/Backup/Automatic";
+
+cd $HOME
+
+echo "Save settings";
+echo "";
+password="pro61cld"
+#echo "Please enter the encryption password";
+#stty -echo
+#read password;
+#stty echo
+
+start_env() {
+
+    echo "Checking environment";
+	if [ ! -d $OUTPUT_DIR/$DATE ]; then
+		mkdir -p $OUTPUT_DIR/$DATE
+	fi
+
+}
+
+list_backup() {
+
+	for i in "${BACKUP_DIR[@]}"; do
+		if [ -d "${HOME}/.config/${i}" ] || [ -f "${HOME}/.config/${i}" ]; then
+			echo $i;
+			create_backup;
+		fi
+	done
+
+}
+
+create_backup() {
+
+	echo "Creating archive $OUTPUT_DIR/$i.tar.gz from $HOME/.config/$i";
+	tar -czvf $OUTPUT_DIR/$i.tar.gz $HOME/.config/$i;
+	gpg --yes --batch --passphrase=$password -c $OUTPUT_DIR/$i.tar.gz;
+	cp $OUTPUT_DIR/$i.tar.gz.gpg $OUTPUT_DIR/$DATE/$i.tar.gz.gpg && rm -f $OUTPUT_DIR/$i.tar.gz;
+
+}
+
+clean_env() {
+
+    echo "Script finished";
+
+}
+
+start_env;
+list_backup;
+create_backup;
+clean_env;

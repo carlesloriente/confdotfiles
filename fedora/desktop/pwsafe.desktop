@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=PWSafe
+Comment=Application for managing passwords
+Exec=env GDK_BACKEND=x11 pwsafe %f
+Icon=/home/jcloriente/.pwsafe/pwsafelogo.png
+Terminal=false
+Type=Application
+Categories=Password vault;

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Firefox Aurora
+Comment=Development version
+Exec=/home/carles/.firefox-aurora/firefox
+Icon=firefox
+Terminal=false
+Type=Application
+Categories=Development;

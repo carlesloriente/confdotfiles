@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Wine Navicat
+Comment=Database administration
+Icon=/home/carles/.navicat/navicat-icon.png
+Exec=LD_LIBRARY_PATH=/home/carles/.navicat/start_navicat
+Terminal=false
+Name[en_US]=wine-navicat.desktop
